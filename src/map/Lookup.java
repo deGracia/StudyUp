@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Lookup {
-	public static String lookupPlace(String query) {
+	public static Location lookupPlace(String query) {
 			JSONArray results = queryURL(query);
 			if (results.isEmpty()) return null;
 		
