@@ -19,8 +19,8 @@ public class EventServiceImpl implements EventService {
 		if(event == null) {
 			throw new StudyUpException("No event found.");
 		}
-
-		if(name.length() >= 20) {
+//		fix the length limit here, which used to be name.length() >= 20
+		if(name.length() > 20) {
 			throw new StudyUpException("Length too long. Maximun is 20");
 		}
 		event.setName(name);
@@ -65,6 +65,11 @@ public class EventServiceImpl implements EventService {
 		List<Student> presentStudents = event.getStudents();
 		if(presentStudents == null) {
 			presentStudents = new ArrayList<>();
+		}
+//		There could at most be {@code 2 students} in an event.
+//		Add the number of limit in one event. 
+		if(presentStudents.size() >= 2) {
+			throw new StudyUpException("There could at most be 2 students in an event.");
 		}
 		presentStudents.add(student);
 		event.setStudents(presentStudents);		
