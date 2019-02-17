@@ -110,8 +110,7 @@ class EventServiceImplTest {
 	@Test 
 	void testTwoStudent_goodCase() throws StudyUpException {
 		int eventID = 1;
-		List<Student> eventStudents = new ArrayList<>();
-		eventStudents = DataStorage.eventData.get(eventID).getStudents();
+		List<Student> eventStudents = DataStorage.eventData.get(eventID).getStudents();
 		// As there's already one student in event 1, create the second Student.
 		Student student2 = new Student();
 		student2.setFirstName("Shuyun");
@@ -167,7 +166,9 @@ class EventServiceImplTest {
 	@Test
 	void deleteEvent() throws StudyUpException{
 		int eventID = 1;
-		Event event = eventServiceImpl.deleteEvent(eventID);
+		// disable the Event, as it's never read or used
+//		Event event = 
+		eventServiceImpl.deleteEvent(eventID);
 		assertNull(DataStorage.eventData.get(eventID));
 	}
 	

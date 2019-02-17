@@ -13,6 +13,10 @@ import edu.studyup.entity.Event;
  * @author Shivani
  * 
  */
+
+// fix the vulnerable field bug, by making it final
+// But should not wrapped into Collections.unmodifiableSet/List/Map/etc, otherwise this class cannot be suitably used
+// thus I regard it as a false positive bug 
 public class DataStorage {
-	public static Map<Integer, Event> eventData = new HashMap<Integer, Event>();
+	public static final Map<Integer, Event> eventData = new HashMap<Integer, Event>();
 }

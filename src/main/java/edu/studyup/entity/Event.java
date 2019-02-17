@@ -46,7 +46,12 @@ public class Event {
 	}
 
 	public Date getDate() {
-		return date;
+		// fix the exposing-internal-representation bug
+		// by storing copy of the date
+//		return date;
+		Date original = new Date();
+		Date copy = new Date(original.getTime());
+		return copy;
 	}
 
 	public void setDate(Date date) {
