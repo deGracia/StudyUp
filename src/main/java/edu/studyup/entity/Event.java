@@ -44,18 +44,17 @@ public class Event {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-
+	//Class Date has some special properties
 	public Date getDate() {
 		// fix the exposing-internal-representation bug
 		// by storing copy of the date
 //		return date;
-		Date original = new Date();
-		Date copy = new Date(original.getTime());
-		return copy;
+		return new Date(date.getTime());
 	}
 
+	//Deep copy
 	public void setDate(Date date) {
-		this.date = date;
+		this.date = new Date(date.getTime());
 	}
 
 	public int getEventID() {
