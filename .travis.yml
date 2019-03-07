@@ -2,5 +2,9 @@ language: java
 jdk: openjdk11
 script: 
     - mvn clean install test
+    # analyses target project by SpotBugs, 
+    - mvn spotbugs:spotbugs
+    # make the build failed if it found any bugs
+    - mvn spotbugs:check
 after_success:
     - mvn jacoco:report coveralls:report
